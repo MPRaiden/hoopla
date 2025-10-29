@@ -8,7 +8,7 @@ def keyword_search(keyword, sourceFile):
         data = json.load(file, strict=False)
 
     for movie in data["movies"]:
-        if keyword in movie["title"]:
+        if keyword.lower() in movie["title"].lower():
             results.append(movie)
 
     sorted_results = sorted(results, key=lambda m: m["id"])
