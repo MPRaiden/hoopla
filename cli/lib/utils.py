@@ -1,5 +1,6 @@
 import json
 import string
+from nltk.stem import PorterStemmer
 
 
 def keyword_search(keyword, sourceFile):
@@ -38,6 +39,10 @@ def search_input_cleanup(input, stopwords=None):
     # removes stopwords
     if stopwords:
         tokens = [token for token in tokens if token not in stopwords]
+
+    # stem
+    stemmer = PorterStemmer()
+    tokens = [stemmer.stem(token) for token in tokens]
 
     return tokens
 
